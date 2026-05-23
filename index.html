@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quizify</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/quiz.css" />
+  <link rel="stylesheet" href="css/result.css" />
+</head>
+
+<body>
+  <div id="qroot">
+
+    <!-- Top bar -->
+    <div class="app-topbar">
+      <div class="app-logo">
+        <div class="logo-dot"><i class="ti ti-bolt"></i></div>
+        <span class="logo-text">Quizify</span>
+      </div>
+      <span class="app-badge"><i class="ti ti-cpu"></i> AI-powered</span>
+    </div>
+
+    <!-- Home screen -->
+    <div id="home-screen">
+      <div class="section-label">Select mode</div>
+      <div class="mode-row">
+        <button class="mode-card active" id="mode-builtin">
+          <div class="mode-icon-wrap"><i class="ti ti-books"></i></div>
+          <div class="mode-title">Built-in questions</div>
+          <div class="mode-desc">15 curated questions across 6 categories</div>
+        </button>
+        <button class="mode-card" id="mode-upload">
+          <div class="mode-icon-wrap"><i class="ti ti-file-upload"></i></div>
+          <div class="mode-title">From your file</div>
+          <div class="mode-desc">Upload a file — AI generates questions</div>
+        </button>
+      </div>
+
+      <!-- Built-in config -->
+      <div id="builtin-config" class="config-panel">
+        <div class="cat-label-row">
+          <span class="cat-label-title">Filter categories</span>
+          <span class="cat-label-hint">Toggle to include</span>
+        </div>
+        <div class="tag-row" id="cat-tags"></div>
+        <div class="divider"></div>
+        <div class="num-row">
+          <span class="num-label">Questions</span>
+          <input type="range" min="5" max="15" value="10" step="1" id="num-slider" />
+          <span class="num-display" id="num-disp">10</span>
+        </div>
+      </div>
+
+      <!-- Upload config -->
+      <div id="upload-config" class="config-panel" style="display:none;">
+        <div class="upload-topic-label">
+          Focus topic <span class="upload-topic-optional">(optional)</span>
+        </div>
+        <input class="topic-input" id="topic-input" type="text" placeholder="e.g. chapter 3, key concepts, dates…" />
+        <div class="drop-zone" id="drop-zone">
+          <div class="drop-icon"><i class="ti ti-cloud-upload"></i></div>
+          <div class="drop-text">Drop a file here, or click to browse</div>
+          <div class="drop-sub">PDF, TXT, MD — up to ~50 pages</div>
+        </div>
+        <input type="file" id="file-input" accept=".pdf,.txt,.md,.text" style="display:none" />
+        <div class="file-chosen" id="file-chosen">
+          <i class="ti ti-file-check file-check-icon"></i>
+          <span id="file-name"></span>
+          <span class="file-clear" id="file-clear"><i class="ti ti-x"></i></span>
+        </div>
+        <div class="divider"></div>
+        <div class="num-row">
+          <span class="num-label">Questions to generate</span>
+          <input type="range" min="5" max="15" value="8" step="1" id="gen-slider" />
+          <span class="num-display" id="gen-disp">8</span>
+        </div>
+      </div>
+
+      <button class="start-btn" id="start-btn">
+        <i class="ti ti-player-play"></i> Start quiz
+      </button>
+    </div>
+
+    <!-- Generating screen -->
+    <div id="generating-card" class="generating-card">
+      <div class="gen-spinner"></div>
+      <div class="gen-text" id="gen-text">Generating questions from your file…</div>
+    </div>
+
+    <!-- Quiz screen -->
+    <div id="quiz-screen" style="display:none;">
+      <div class="quiz-header">
+        <span class="q-counter-pill" id="q-counter">Question 1 of 10</span>
+        <span class="cat-pill" id="cat-label">General knowledge</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+      <div class="question-card" id="question-card">
+        <div class="question-text" id="question-text"></div>
+        <div class="options-grid" id="options-grid"></div>
+      </div>
+      <div class="quiz-footer">
+        <div class="score-badge">
+          <i class="ti ti-star"></i>
+          <span id="score-chip">Score: 0</span>
+        </div>
+        <button class="next-btn" id="next-btn">
+          Next <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Result screen -->
+    <div class="result-card" id="result-card">
+      <div class="result-ring">
+        <div class="result-score" id="result-score">0</div>
+        <div class="result-of" id="result-of">/ 10</div>
+      </div>
+      <div class="result-msg" id="result-msg"></div>
+      <div class="result-breakdown">
+        <div class="breakdown-cell bd-correct">
+          <div class="bd-val-correct" id="bd-correct">0</div>
+          <div class="breakdown-lbl">Correct</div>
+        </div>
+        <div class="breakdown-cell bd-wrong">
+          <div class="bd-val-wrong" id="bd-wrong">0</div>
+          <div class="breakdown-lbl">Wrong</div>
+        </div>
+        <div class="breakdown-cell bd-pct">
+          <div class="bd-val-pct" id="bd-pct">0%</div>
+          <div class="breakdown-lbl">Accuracy</div>
+        </div>
+      </div>
+      <div class="action-row">
+        <button class="btn-green" id="btn-restart">
+          <i class="ti ti-refresh"></i> Play again
+        </button>
+        <button class="btn-outline" id="btn-home">
+          <i class="ti ti-layout-grid"></i> Change quiz
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /#qroot -->
+
+  <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

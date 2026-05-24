@@ -1,0 +1,33 @@
+:root {
+  --orange-50: #fff4ec;
+  --orange-100: #ffe0c4;
+  --orange-300: #f5a05a;
+  --orange-500: #e07930;
+  --orange-700: #9a4f18;
+
+  --sea-50: #e8f6fa;
+  --sea-100: #bde5f0;
+  --sea-300: #5bb8d4;
+  --sea-500: #1a90b8;
+  --sea-700: #0d5e7a;
+
+  --green-50: #edfaf0;
+  --green-100: #c5eed0;
+  --green-400: #2eaa58;
+  --green-600: #1c7a3e;
+  --green-800: #0e4a24;
+
+  --red-50: #fcebeb;
+  --red-100: #f7c1c1;
+  --red-400: #e24b4a;
+  --red-800: #501313;
+  --red-deep: #a32d2d;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+  --radius-pill: 99px;
+
+  --font-sans: system-ui, -apple-system, sans-serif;
+}

@@ -29,14 +29,11 @@ Because `main.js` uses ES modules (`type="module"`), the app must be served over
 Any static file server works:
 
 ```bash
-# Python
-python3 -m http.server 3000
-
 # Node (npx)
 npx serve .
 
 # VS Code
-# Use the "Live Server" extension and click "Go Live"
+ Use the "Live Server" extension and click "Go Live"
 ```
 
 Then open `http://localhost:3000` in your browser.

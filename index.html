@@ -5,17 +5,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quizify</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/home.css" />
   <link rel="stylesheet" href="css/quiz.css" />
   <link rel="stylesheet" href="css/result.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@tabler/icons-webfont@latest/tabler-icons.min.css" />
 </head>
 
 <body>
+
   <div id="qroot">
 
-    <!-- Top bar -->
     <div class="app-topbar">
       <div class="app-logo">
         <div class="logo-dot"><i class="ti ti-bolt"></i></div>
@@ -40,11 +41,10 @@
         </button>
       </div>
 
-      <!-- Built-in config -->
       <div id="builtin-config" class="config-panel">
         <div class="cat-label-row">
-          <span class="cat-label-title">Filter categories</span>
-          <span class="cat-label-hint">Toggle to include</span>
+          <span class="panel-title">Filter categories</span>
+          <span class="panel-hint">Toggle to include</span>
         </div>
         <div class="tag-row" id="cat-tags"></div>
         <div class="divider"></div>
@@ -55,10 +55,9 @@
         </div>
       </div>
 
-      <!-- Upload config -->
       <div id="upload-config" class="config-panel" style="display:none;">
-        <div class="upload-topic-label">
-          Focus topic <span class="upload-topic-optional">(optional)</span>
+        <div class="panel-title" style="margin-bottom:4px;">
+          Focus topic <span class="panel-hint">(optional)</span>
         </div>
         <input class="topic-input" id="topic-input" type="text" placeholder="e.g. chapter 3, key concepts, dates…" />
         <div class="drop-zone" id="drop-zone">
@@ -68,7 +67,7 @@
         </div>
         <input type="file" id="file-input" accept=".pdf,.txt,.md,.text" style="display:none" />
         <div class="file-chosen" id="file-chosen">
-          <i class="ti ti-file-check file-check-icon"></i>
+          <i class="ti ti-file-check file-ok-icon"></i>
           <span id="file-name"></span>
           <span class="file-clear" id="file-clear"><i class="ti ti-x"></i></span>
         </div>
@@ -137,16 +136,16 @@
         </div>
       </div>
       <div class="action-row">
-        <button class="btn-green" id="btn-restart">
+        <button class="btn-green" id="play-again-btn">
           <i class="ti ti-refresh"></i> Play again
         </button>
-        <button class="btn-outline" id="btn-home">
+        <button class="btn-outline" id="change-quiz-btn">
           <i class="ti ti-layout-grid"></i> Change quiz
         </button>
       </div>
     </div>
 
-  </div><!-- /#qroot -->
+  </div>
 
   <script type="module" src="js/main.js"></script>
 </body>
